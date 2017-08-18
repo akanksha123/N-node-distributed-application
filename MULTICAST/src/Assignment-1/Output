@@ -1,0 +1,79 @@
+// Time daemon Output:
+
+akanksha@akanksha:~/Desktop/OS/Project2$ make compile
+gcc s5.cpp -o s5.out -lpthread
+gcc c6.cpp -o c6.out
+akanksha@akanksha:~/Desktop/OS/Project2$ make runserver
+./s5.out 9090 3
+----------------------------------
+No. of processes are:3
+Server time is:8
+----------------------------------
+Distributed Node 1 is connected
+Time daemon received :Hi
+Time daemon received clock time diff:-1 from node: 1
+----------------------------------
+Distributed Node 2 is connected
+Time daemon received :Hi
+Time daemon received clock time diff:-1 from node: 2
+----------------------------------
+Distributed Node 3 is connected
+Time daemon received :Hi
+Time daemon received clock time diff:-2 from node: 3
+----------------------------------
+**********************************
+Avg is:-1
+**********************************
+Clock time difference for node is:-2
+Synctime for node is:1
+----------------------------------
+**********************************
+Server synchronized time is:7
+**********************************
+Clock time difference for node is:-1
+Synctime for node is:0
+----------------------------------
+Clock time difference for node is:-1
+Synctime for node is:0
+----------------------------------
+
+//Distrubuted Node Output of synchronization:
+
+akanksha@akanksha:~/Desktop/OS/Project2$ make runclient
+./c6.out 127.0.0.1 9090
+Time daemon's clock time is:8
+--------------------------------------------
+Node's logical timestamp is:7
+Node sent time difference of -1 to the time daemon
+--------------------------------------------
+Time daemon sent sync time :0
+Node's clocktime is:7
+--------------------------------------------
+Process synchronized its clock to:7
+--------------------------------------------
+
+akanksha@akanksha:~/Desktop/OS/Project2$ make runclient
+./c6.out 127.0.0.1 9090
+Time daemon's clock time is:8
+--------------------------------------------
+Node's logical timestamp is:7
+Node sent time difference of -1 to the time daemon
+--------------------------------------------
+Time daemon sent sync time :0
+Node's clocktime is:7
+--------------------------------------------
+Process synchronized its clock to:7
+--------------------------------------------
+
+akanksha@akanksha:~/Desktop/OS/Project2$ make runclient
+./c6.out 127.0.0.1 9090
+Time daemon's clock time is:8
+--------------------------------------------
+Node's logical timestamp is:6
+Node sent time difference of -2 to the time daemon
+--------------------------------------------
+Time daemon sent sync time :1
+Node's clocktime is:6
+--------------------------------------------
+Process synchronized its clock to:7
+--------------------------------------------

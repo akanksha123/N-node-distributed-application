@@ -1,0 +1,307 @@
+//Sequencer output:
+akanksha@akanksha:~/Desktop/OS/Project2$ g++ sequencer.cpp -o sequencer.out -lpthread
+akanksha@akanksha:~/Desktop/OS/Project2$ ./sequencer.out 9092 9090 9091 9093Inside sequencer
+Port no. is:9092
+POrt no.is:9092
+
+Before listen
+Lis:0
+After listenlisten socket is:3
+Sequencer received from clients:64
+
+Sending to port: 9090
+Buffer content seq is sending :1	64
+
+Sending to port: 9091
+Buffer content seq is sending :1	64
+
+Sending to port: 9093
+Buffer content seq is sending :1	64
+
+Sequencer received from clients:6
+Sending to port: 9090
+Buffer content seq is sending :2	6
+
+Sending to port: 9091
+Buffer content seq is sending :2	6
+
+Sending to port: 9093
+Buffer content seq is sending :2	6
+
+Sequencer received from clients:50
+Sending to port: 9090
+Buffer content seq is sending :3	50
+
+Sending to port: 9091
+Buffer content seq is sending :3	50
+
+Sending to port: 9093
+Buffer content seq is sending :3	50
+
+Sequencer received from clients:31
+Sending to port: 9090
+Buffer content seq is sending :4	31
+
+Sending to port: 9091
+Buffer content seq is sending :4	31
+
+Sending to port: 9093
+Buffer content seq is sending :4	31
+
+Sequencer received from clients:85
+Sending to port: 9090
+Buffer content seq is sending :5	85
+
+Sending to port: 9091
+Buffer content seq is sending :5	85
+
+Sending to port: 9093
+Buffer content seq is sending :5	85
+
+Sequencer received from clients:36
+Sending to port: 9090
+Buffer content seq is sending :6	36
+
+Sending to port: 9091
+Buffer content seq is sending :6	36
+
+Sending to port: 9093
+Buffer content seq is sending :6	36
+
+Sequencer received from clients:49
+Sending to port: 9090
+Buffer content seq is sending :7	49
+
+Sending to port: 9091
+Buffer content seq is sending :7	49
+
+Sending to port: 9093
+Buffer content seq is sending :7	49
+
+Sequencer received from clients:18
+Sending to port: 9090
+Buffer content seq is sending :8	18
+
+Sending to port: 9091
+Buffer content seq is sending :8	18
+
+Sending to port: 9093
+Buffer content seq is sending :8	18
+
+Sequencer received from clients:2
+Sending to port: 9090
+Buffer content seq is sending :9	2
+
+Sending to port: 9091
+Buffer content seq is sending :9	2
+
+Sending to port: 9093
+Buffer content seq is sending :9	2
+
+Sequencer received from clients:83
+Sending to port: 9090
+Buffer content seq is sending :10	83
+
+Sending to port: 9091
+Buffer content seq is sending :10	83
+
+ERROR connectingSending to port: 9093
+Buffer content seq is sending :10	83
+
+//Node 1 output:
+
+akanksha@akanksha:~/Desktop/OS/Project2$ g++ node.cpp -o node.out -lpthread
+akanksha@akanksha:~/Desktop/OS/Project2$ ./node.out 9090 9091 9093 9092
+Port no. is:9090Port no. is:9091Port no. is:9093Port no. is:9092argcount is:5Inside processrequests function
+Port no. is:9090
+
+Before listen
+Inside client thread
+Lis:0
+After listenlisten socket is:3
+Press any key when all servers are up
+ 
+Node is sending message:93
+msgbuffer is:0
+msgbuffer is:93
+Node is sending message:67
+Node is sending message:64
+msgbuffer is:64
+-------------------------------
+Received GS 1 and 64 msg
+GS and mindex matched
+Node is sending message:6
+Node is sending message:50
+msgbuffer is:50
+msgbuffer is:50
+-------------------------------
+Received GS 2 and 6 msg
+GS and mindex matched
+Node is sending message:90
+-------------------------------
+Received GS 3 and 50 msg
+GS and mindex matched
+Node is sending message:31
+msgbuffer is:31
+Node is sending message:85
+-------------------------------
+Received GS 4 and 31 msg
+GS and mindex matched
+Node is sending message:36
+msgbuffer is:36
+msgbuffer is:36
+-------------------------------
+Received GS 5 and 85 msg
+GS and mindex matched
+Node is sending message:2
+Node is sending message:49
+-------------------------------
+Received GS 6 and 36 msg
+GS and mindex matched
+msgbuffer is:49
+Node is sending message:18
+-------------------------------
+Received GS 7 and 49 msg
+GS and mindex matched
+Node is sending message:2
+msgbuffer is:2
+msgbuffer is:2
+Node is sending message:17
+-------------------------------
+Received GS 8 and 18 msg
+GS and mindex matched
+Node is sending message:83
+msgbuffer is:83
+-------------------------------
+Received GS 9 and 2 msg
+GS and mindex matched
+Node is sending message:94
+Node is sending message:18
+msgbuffer is:18
+-------------------------------
+Received GS 10 and 83 msg
+
+// Node2 output
+akanksha@akanksha:~/Desktop/OS/Project2$ ./node.out 9091 9090 9093 9092
+Port no. is:9091Port no. is:9090Port no. is:9093Port no. is:9092argcount is:5Inside processrequests function
+Port no. is:9091
+
+Before listen
+Lis:0
+After listenlisten socket is:3
+
+Inside client threadPress any key when all servers are up
+msgbuffer is:67
+msgbuffer is:67
+
+Node is sending message:67
+msgbuffer is:67
+Node is sending message:64
+-------------------------------
+Received GS 1 and 64 msg
+GS and mindex matched
+Node is sending message:6
+Node is sending message:50
+-------------------------------
+Received GS 2 and 6 msg
+GS and mindex matched
+msgbuffer is:90
+msgbuffer is:90
+Node is sending message:90
+msgbuffer is:90
+-------------------------------
+Received GS 3 and 50 msg
+GS and mindex matched
+Node is sending message:31
+Node is sending message:85
+-------------------------------
+Received GS 4 and 31 msg
+GS and mindex matched
+Node is sending message:36
+msgbuffer is:2
+msgbuffer is:2
+-------------------------------
+Received GS 5 and 85 msg
+GS and mindex matched
+Node is sending message:2
+msgbuffer is:2
+Node is sending message:49
+-------------------------------
+Received GS 6 and 36 msg
+GS and mindex matched
+Node is sending message:18
+-------------------------------
+Received GS 7 and 49 msg
+GS and mindex matched
+Node is sending message:2
+msgbuffer is:17
+msgbuffer is:17
+Node is sending message:17
+msgbuffer is:17
+-------------------------------
+Received GS 8 and 18 msg
+GS and mindex matched
+Node is sending message:83
+-------------------------------
+Received GS 9 and 2 msg
+GS and mindex matched
+Node is sending message:94
+Node is sending message:18
+-------------------------------
+Received GS 10 and 83 msg
+GS and mindex matched
+Node is sending message:4
+
+
+// Node 3 output
+
+./node.out 9093 9090 9091 9092
+Port no. is:9093Port no. is:9090Port no. is:9091Port no. is:9092argcount is:5Inside processrequests function
+Port no. is:9093
+
+Before listen
+Lis:0
+After listenlisten socket is:3
+
+Inside client threadPress any key when all servers are up
+
+Node is sending message:85
+msgbuffer is:85
+Node is sending message:93
+Node is sending message:67
+msgbuffer is:64
+Node is sending message:64
+Node is sending message:
+msgbuffer is:0
+msgbuffer is:6
+-------------------------------
+Node is sending message:50
+Node is sending message:90
+-------------------------------
+msgbuffer is:31
+Node is sending message:31
+-------------------------------
+Node is sending message:85
+msgbuffer is:85
+msgbuffer is:85
+Node is sending message:36
+-------------------------------
+Node is sending message:2
+-------------------------------
+msgbuffer is:49
+Node is sending message:49
+Node is sending message:18
+msgbuffer is:18
+-------------------------------
+msgbuffer is:18
+Node is sending message:2
+-------------------------------
+Node is sending message:17
+msgbuffer is:83
+Node is sending message:83
+-------------------------------
+Node is sending message:94
+msgbuffer is:94
+msgbuffer is:94
+-------------------------------
+

@@ -1,0 +1,54 @@
+				           Project -2					Akanksha Bhosale
+											CZ44818
+Introduction:
+The design document describes program design of a n-node distributed application that consists of following implementations of Berkeley Synchronization,Non-total ordered multicast and totally ordered multicast.
+
+Design Approach & Learnings:
+Assignment 1 :
+In Berkeley algorithm implementation, the client-server architecture is used with TCP transport layer protocol for communication.
+The time daemon first asks all the nodes involved in a communication for their current logical clock and sends along its own time which is Server time.
+All other processes or distributed application nodes send the difference between their logical clock and time daemon’s received clock.
+The time daemon then after receiving the expected logical clocks’ differences from all of the nodes initiates the procedure of synchronization.
+It takes all the differences and computes the average of it.  Then sends back the adjustment time to every node and also synchronizes its own logical clock by adding this average to its own logical clock.
+
+Issues:
+
+1.	The time daemon starts calculating the average or procedure of synchronization as soon as any 	of the node’s logical clock is received while it should wait for all the involved node’s logical 	clocks and then should start the computation.
+	Resolution:
+	Synchronization is started by the time daemon only when connected node’s count is equal to the 	no. of expected nodes. For this one parameter indicating the no. of processes involved in a 	communication is passed through command line while running the time daemon or Server code.
+
+is The incremental design approach is implemented throughout the development of this application developed using socket communication and connection oriented transport layer protocol TCP.
+Every client after successful connection with server first sends total no. of requests to the server and server sends its acknowledgement. 
+Initially the client sends a transaction request (either withdraw/deposit) to a server.At the server end, all required validation checks are performed like sufficient balance check before processing a transaction. 
+After successful validation, server performs the transaction and sends back the acknowledgement to the client.Every single transaction communication is logged at the server and client console terminals.
+The client waits before sending the next transaction request to the server and the time interval is calculated as the subtraction of the next transaction’s timestamp and current transaction’s timestamp and then multiplied by the time step provided by the client as a argument from the terminal.
+After implementing single client and server application, an incremental design consisting of multiple clients is implemented with multithreading.
+In case of single or multiple clients for each client trying to connect to a server, a new thread is created by the server using POSIX thread library and  is handed over to a handler that processes all the incoming requests initiated by that particular client.
+ In case of single or multiple clients, every transaction is taken care by mutex locks to provide exclusive access to a thread performing an operation and avoid deadlock that may result when multiple clients try to perform the same transaction on a same account.
+Every client calculates average time per transaction which is logged in a log.txt file.
+Also,periodically after a time interval of 5, the server adds interest amount to each account mentioned in a Records.txt
+
+Steps for Execution:
+Makefile consists of following steps for executing an application :
+In order to clean all the compiled .out files “make clean” cleans out files present in current directory by executing the command  rm *.out
+To compile the server and client “make compile” compiles as:
+    gcc server11.cpp -o server11.out -lpthread
+    gcc client7.cpp -o client7.out
+
+
+To run a server executable “make runserver” runs
+    ./server11.out 8087
+Similarly, in order to run a client “make runclient” runs the client
+    ./client7.out 127.0.0.1 8087 0.8 Transactions.txt
+
+Design Tradeoff :    
+Processing overhead is one of the primary concerns in socket communication. To lower this overhead, for every active incoming requests,separate function handler processrequests handles it.
+The handler abstraction is providing a secure layer for interprocess communication.
+Also once the request is handed over to the handler it performs further processing by creating its own local socket so that server’s parent socket can accept further incoming requests.
+
+Possible improvements :
+To reduce the communication overhead and improve the performance time we can have our own fast socket design implementation.
+Efficient buffer management can improve interoperability.
+Efficient logging can help tracking any unexpected events.
+
+

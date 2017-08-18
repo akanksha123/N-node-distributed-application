@@ -1,0 +1,70 @@
+Process 1 :
+akanksha@akanksha:~/Desktop/Akanksha_Project2/src/Assignment-2-FIFO$ make compile
+gcc seq4.cpp -o seq4.out -lpthread
+akanksha@akanksha:~/Desktop/Akanksha_Project2/src/Assignment-2-FIFO$ make run1
+./seq4.out 9090 9091 9092
+Buffer content sending is:10	9090
+
+Port of sender is:9090
+-------------------------------
+Received message 10 from 9090 port
+-------------------------------
+Buffer content sending is:11	9091
+
+Port of sender is:9091
+-------------------------------
+Received message 11 from 9090 port
+-------------------------------
+Buffer content sending is:12	9092
+
+Port of sender is:9092
+-------------------------------
+Received message 12 from 9090 port
+-------------------------------
+
+Process 2:
+akanksha@akanksha:~/Desktop$ cd Akanksha_Project2/src/Assignment-2-FIFO/
+akanksha@akanksha:~/Desktop/Akanksha_Project2/src/Assignment-2-FIFO$ make run2
+./seq4.out 9091 9090 9092
+Buffer content sending is:10	9091
+
+Port of sender is:9091
+-------------------------------
+Received message 10 from 9091 port
+-------------------------------
+-------------------------------
+Received message 11 from 9091 port
+-------------------------------
+Buffer content sending is:11	9090
+
+Port of sender is:9090
+-------------------------------
+Received message 11 from 9091 port
+-------------------------------
+Buffer content sending is:12	9092
+
+Port of sender is:9092
+
+Process 3:
+akanksha@akanksha:~/Desktop$ cd Akanksha_Project2/src/Assignment-2-FIFO/
+akanksha@akanksha:~/Desktop/Akanksha_Project2/src/Assignment-2-FIFO$ make run3
+./seq4.out 9092 9091 9090
+Buffer content sending is:10	9092
+
+Port of sender is:9092
+-------------------------------
+Received message 10 from 9092 port
+-------------------------------
+Buffer content sending is:11	9091
+
+Port of sender is:9091
+-------------------------------
+Received message 12 from 9092 port
+-------------------------------
+-------------------------------
+Received message 12 from 9092 port
+-------------------------------
+Buffer content sending is:12	9090
+
+Port of sender is:9090
+
